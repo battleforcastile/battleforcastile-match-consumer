@@ -42,6 +42,8 @@ spec:
                 secretKeyRef:
                   name: battleforcastile-match-consumer-secrets
                   key: rabbitmq_password
+            - name: PRODUCTION_MODE
+              value: "true"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
