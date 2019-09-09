@@ -7,12 +7,8 @@ This micro-service handles the consumption of pending matches
 
 > This guide assumes that there's a K8s cluster (with Helm-tiller) and a rabbitmq server in place.
 
-#### 1.1 Go to `/helm/battleforcastile-match-consumer/` folder and copy the content from `templates-examples` to `templates`
-```
-cp helm/battleforcastile-match-consumer/templates-examples/* helm/battleforcastile-match-consumer/templates/*
-```
+#### 1.1 Run `helm install helm/battleforcastile-match-consumer --set rabbitmqpassword=... --set rabbitmquser=... --set secretkey=...` and in a few minutes it should be deployed! :)
 
-#### 1.3 Uncomment the content from `battleforcastile-match-consumer-secrets.yml` (from `templates`) and replace:
- - The value of `secret_key` by the `base64` value of the secret key of your Flask App (can be random)
-
-#### 1.4 Run `helm install helm/battleforcastile-match-consumer` and in a few minutes it should be deployed! :)
+* The value of `rabbitmqpassword` is the `base64` of the rabbitmq password
+* The value of `rabbitmquser` is the `base64` value of the rabbitmq user
+* The value of `secretkey` is the `base64` value of the secret key of your Flask App (can be random)

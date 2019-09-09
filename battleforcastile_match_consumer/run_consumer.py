@@ -1,8 +1,29 @@
+import json
 import os
 import pika
 import requests
+import google.cloud.logging
+import logging
 
-from battleforcastile_match_consumer.custom_logging import logging
+# Custom formatter returns a structure, than a string
+class CustomFormatter(logging.Formatter):
+    def format(self, record):
+        log_msg = super(CustomFormatter, self).format(record)
+        return {
+            'msg': log_msg,
+            'args': record.args,
+        }
+
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+if os.getenv('PRODUCTION_MODE'):
+    client = google.cloud.logging.Client()
+    handler = client.get_default_handler()
+    handler.setFormatter(CustomFormatter())
+    logger.addHandler(handler)
+
 
 credentials = pika.PlainCredentials(
     os.getenv('RABBITMQ_USER', 'user').rstrip(), os.getenv('RABBITMQ_PASSWORD', '').rstrip())
@@ -20,7 +41,7 @@ def callback(ch, method, properties, body):
             'service': 'battleforcastile-match-consumer',
             'username': None,
             'action': 'consume_match',
-            'payload': body
+            'payload': None
         }
     )
     r = requests.post(
@@ -34,7 +55,7 @@ def callback(ch, method, properties, body):
                 'service': 'battleforcastile-match-consumer',
                 'username': None,
                 'action': 'consume_match',
-                'payload': r.content
+                'payload': None
             }
         )
     else:
@@ -45,7 +66,7 @@ def callback(ch, method, properties, body):
                 'service': 'battleforcastile-match-consumer',
                 'username': None,
                 'action': 'consume_match',
-                'payload': r.content
+                'payload': None
             }
         )
 
