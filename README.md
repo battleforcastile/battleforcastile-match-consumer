@@ -1,6 +1,6 @@
 # Battle For Castile: Match Consumer
 
-[![CircleCI](https://circleci.com/gh/battleforcastile/battleforcastile-match-consumer/tree/master.svg?style=svg)](https://circleci.com/gh/battleforcastile/battleforcastile-match-consumer/tree/master)
+[![Build Status](https://dev.azure.com/javidgon/Battleforcastile/_apis/build/status/battleforcastile.battleforcastile-match-consumer?branchName=master)](https://dev.azure.com/javidgon/Battleforcastile/_build/latest?definitionId=5&branchName=master)
 
 This micro-service handles the consumption of pending matches
 ## 1. Installation and set up
