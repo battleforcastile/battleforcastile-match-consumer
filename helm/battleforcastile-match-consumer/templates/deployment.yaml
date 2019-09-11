@@ -31,17 +31,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: battleforcastile-match-consumer-secrets
-                  key: secret_key
+                  key: secretkey
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:
                   name: battleforcastile-match-consumer-secrets
-                  key: rabbitmq_user
+                  key: rabbitmq-username
             - name: RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: battleforcastile-match-consumer-secrets
-                  key: rabbitmq_password
+                  key: rabbitmq-password
             - name: PRODUCTION_MODE
               value: "true"
           resources:
