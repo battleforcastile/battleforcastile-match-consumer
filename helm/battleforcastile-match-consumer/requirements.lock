@@ -1,6 +1,6 @@
 dependencies:
 - name: rabbitmq
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 6.4.5
-digest: sha256:e88445d70672179c5f4166d1c6cfb910dddfbacb2d593c4b8835d0ddc82275e0
-generated: 2019-09-20T18:36:00.702553529+02:00
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.20.2
+digest: sha256:6127dd42da91d75b0fd9a8f9745e3ef60a0bee4c86cf4397fb152c7e87d4cb7f
+generated: "2021-08-21T10:34:10.451713425Z"

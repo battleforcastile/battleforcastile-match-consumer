@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: battleforcastile-match-consumer-deployment
@@ -42,8 +42,8 @@ spec:
                 secretKeyRef:
                   name: battleforcastile-match-consumer-secrets
                   key: rabbitmq-password
-            - name: PRODUCTION_MODE
-              value: "true"
+            # - name: PRODUCTION_MODE
+            #   value: "true"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
